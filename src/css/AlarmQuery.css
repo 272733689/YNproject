@@ -1,0 +1,29 @@
+.div-page {
+    background: rgba(0, 0, 0, 0.86);
+    width: 100%;
+    height: 900px;
+
+    /*border-radius: 4px;*/
+    /*margin-left: 24px;*/
+    /*margin-bottom: 24px;*/
+    /*margin-right: 24px;*/
+}
+
+.div-back{
+    background: rgba(255, 255, 255, 1);
+    height: 290px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.div-map_back{
+    margin-top: 10px;
+    background: rgba(255, 255, 255, 1);
+    height: 890px;
+    /**  col 是300  div 是290  实际高是300   上间距10
+    900-10 = 890
+    */
+    margin-left: 10px;
+    /*margin-right: 12px;*/
+}
+

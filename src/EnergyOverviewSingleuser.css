@@ -1,0 +1,234 @@
+.div-body{
+    font-family:微软雅黑, "Open Sans", "宋体";
+    height:600px;
+    min-height: 1000px;
+    max-height: 1000px;
+    background: #e8e8e8;
+}
+
+.madalFont{
+    /*width:73px;*/
+    /*height:18px;*/
+    font-size:18px;
+    font-family:MicrosoftYaHei;
+    font-weight:400;
+    color:rgba(50,50,50,1);
+
+}
+
+.transformerFont{
+    /*width:89px;*/
+    /*height:24px;*/
+    /*font-size:30px;*/
+    font-size: 150%;
+    width: 20%;
+    font-family:MicrosoftYaHei-Bold;
+    font-weight:bold;
+    color:rgba(48,144,255,1);
+}
+
+.addressFont{
+    /*width:96px;*/
+    /*height:16px;*/
+    height:16px;
+    font-size:16px;
+    font-family:MicrosoftYaHei;
+    font-weight:400;
+    color:rgba(100,100,100,1);
+
+}
+
+.electricityTodayFont{
+    font-size:12px;
+    font-family:MicrosoftYaHei;
+    font-weight:400;
+    color:rgba(100,100,100,1)
+}
+
+.electricityTodayValue{
+    font-size:24px;
+    font-family:MicrosoftYaHei-Bold;
+    font-weight:bold;
+    color:rgba(48,144,255,1);
+}
+
+.electricityYesTodayValue{
+    font-size:16px;
+    font-family:MicrosoftYaHei-Bold;
+    font-weight:bold;
+    color:rgba(153,153,153,1);
+}
+
+.percentage{
+    width: 100%;
+    height:50%;
+    margin-left: -45%;
+
+    /*width:60px;*/
+    /*height:28px;*/
+    background:rgba(229,115,115,1);
+    border-radius:4px;
+}
+.percentageFont{
+
+    font-size:12px;
+    font-family:MicrosoftYaHei-Bold;
+    font-weight:bold;
+    color:rgba(255,255,255,1);
+}
+
+.ElectricityBillFont{
+
+
+    font-size:18px;
+    width:.20%;
+    font-family:MicrosoftYaHei;
+    /*font-weight:150%;*/
+    font-weight:400;
+    color:rgba(100,100,100,1);
+
+}
+.inline{
+     width:100%;
+     height:30%;
+     background: linear-gradient(90deg,rgba(51,153,255,1), #cccccc);
+     position: absolute;
+     margin-top: -2px;
+ }
+
+.classColorGreen{
+    width:12px;
+    height:12px;
+    background:rgba(73,208,117,1);
+    /*border-radius:4px;*/
+}
+
+.classColorRed{
+    width:12px;
+    height:12px;
+    background:rgba(229,115,115,1);
+}
+
+.greenFont{
+    /*width:18px;*/
+    /*height:13px;*/
+    font-size:16px;
+    font-family:MicrosoftYaHei;
+    font-weight:400;
+    color:rgba(73,208,117,1);
+}
+.redFont{
+    /*width:18px;*/
+    /*height:14px;*/
+    font-size:16px;
+    font-family:MicrosoftYaHei;
+    font-weight:400;
+    color:rgba(229,115,115,1);
+}
+
+
+.spanfirstTitle{
+    /*width:96px;*/
+    /*height:17px;*/
+    padding-top: 3%;
+    font-size:16px;
+    font-family:MicrosoftYaHei;
+    font-weight:400;
+    color:rgba(255,255,255,1);
+}
+
+
+.span{
+    width:180px;
+    height:160px;
+    border:2px solid rgba(230,230,230,1);
+    border-radius:4px;
+}
+.spanTitleRed{
+    width:178px;
+    height:40px;
+    background:rgba(229,115,115,1);
+    border-radius:4px 4px 0px 0px;
+}
+.spanTitleGreen{
+    width:178px;
+    height:40px;
+    background:rgba(73,208,117,1);
+    border-radius:4px 4px 0px 0px;
+}
+.spanTime{
+    font-size:12px;
+    font-family:Helvetica;
+    font-weight:400;
+    color:rgba(153,153,153,1);
+}
+.spanDetailed{
+    /*width:218px;*/
+    /*height:31px;*/
+    font-size:14px;
+    font-family:MicrosoftYaHei;
+    font-weight:400;
+    color:rgba(100,100,100,1);
+
+}
+
+.spanProGreen{
+    width:70px;
+    height:32px;
+    background:rgba(73,208,117,1);
+    border-radius:4px;
+}
+
+.spanProRed{
+    width:70px;
+    height:32px;
+    background:rgba(229,115,115,1);
+    border-radius:4px;
+}
+
+.spanProRedFont{
+    /*width:48px;*/
+    height:16px;
+    /*margin-left: 49px;*/
+    /*!*marginLeft:49;*!*/
+    /*margin-top: 15px;*/
+    font-size:16px;
+    font-family:MicrosoftYaHei;
+    font-weight:400;
+    color:rgba(255,255,255,1);
+}
+
+.position{
+    z-index: 9;
+}
+.position1{
+    z-index: 9999999;
+}
+
+.progressFont{
+    font-size:14px;
+    font-family:MicrosoftYaHei;
+    font-weight:400;
+    color:rgba(100,100,100,1);
+}
+
+.todayElectricity2{
+    /*width:118px;*/
+    /*height:24px;*/
+    line-height: 35px;
+    magrin-top:10px;
+    font-size:18px;
+    font-family:MicrosoftYaHei-Bold;
+    font-weight:bold;
+    color:rgba(48,144,255,1);
+}
+.todayElectricity3{
+    /*width:118px;*/
+    /*height:24px;*/
+    line-height: 55px;
+    magrin-top:20px;
+    font-size:15px;
+    font-family:MicrosoftYaHei-Bold;
+    font-weight:bold;
+    color:rgba(48,144,255,1);
+}

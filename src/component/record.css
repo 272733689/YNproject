@@ -1,0 +1,256 @@
+.div-bodys{
+	font-family:微软雅黑, "Open Sans", "宋体";
+	background:rgba(242,242,242,1);
+	height:100vh;
+}
+ :global(.ant-tree li .ant-tree-node-content-wrapper) {
+	padding:0px;
+	line-height: 21px;
+}
+:global(.ant-tree li span.ant-tree-iconEle) {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	margin: 0;
+	line-height: 30px;
+	text-align: center;
+	vertical-align: top;
+	border: 0 none;
+	outline: none;
+	cursor: pointer;
+}
+ .tableFontCss{
+	 font-size: 12px;
+	 font-family:MicrosoftYaHei-Bold;
+	 font-weight:bold;
+	 color:rgba(51,51,51,1);
+	 line-height:21px;
+ }
+
+ .searchFontCss{
+	 font-size: 12px;
+	 font-family:MicrosoftYaHei-Bold;
+	 color:rgba(102,102,102,1);
+	 line-height:21px;
+	 padding-top: 6px;
+	 width:96%;
+	 margin-left:2%;
+ }
+
+ .buttonFontCss{
+	 font-size:12px;
+	 font-family:MicrosoftYaHei;
+	 color:rgba(255,255,255,1);
+	 line-height:21px;
+ }
+ .ant-tree-switchers{
+	 display: inline-block;
+	 width: 16px;
+	 height: 16px;
+	 margin: 0;
+	 line-height: 24px;
+	 text-align: center;
+	 vertical-align: top;
+	 border: 0 none;
+	 outline: none;
+	 cursor: pointer;
+	 font-size: 12px;
+	 font-family:MicrosoftYaHei;
+     color:rgba(51,51,51,1);
+
+ }
+
+ .queryDiv{
+	 float:left;
+	 margin-left:18px;
+ }
+ .queryInput{
+	 /*width:145px;*/
+     width:50%;
+	 font-size:12px;
+	 font-family:MicrosoftYaHei-Bold;
+	 color:rgba(102,102,102,1);
+ }
+.rowPadding{
+	margin-top:9px;
+}
+.searchInput{
+	margin-left:18px;
+	margin-bottom:8px;
+	margin-top:20px;
+	width:85%;
+	font-size:12px;
+	font-family:MicrosoftYaHei-Bold;
+	color:rgba(102,102,102,1);
+}
+.titleClass{
+	font-size: 12px;
+	font-family:MicrosoftYaHei;
+	color:rgba(51,51,51,1);
+}
+.treeScroll{
+	height:88%;
+	width:240px;
+	overflow-y:auto;
+	overflow-x:auto;
+	margin-left:12px;
+	margin-right:12px;
+
+}
+.inline{
+
+	height:1px;
+	/*background: linear-gradient(90deg,rgba(51,153,255,1),#cccccc);*/
+	position: absolute;
+	margin-top: 0px;
+	margin-left:30px;
+	background: #e8e8e8;
+	width:100%;
+}
+.left{
+	background:rgba(235,235,235,1);
+	height:100%;
+	flex: 0 0 200px;
+}
+.right{
+	background:#FFFFFF;
+	border-left:5px;
+	height:100%;
+	flex: 1;
+	width:100%;
+	box-sizing: border-box;
+//position: relative;
+}
+
+.container {display: flex;height:100%;}
+
+.dayuClass::before {
+	content:'>\00a0';
+	color: #ccc;
+}
+
+.div-pages {
+	background:#ecf0f5;
+	border-radius: 4px;
+	margin-left: 15px;
+
+	margin-right: 15px;
+	height:98%;
+}
+
+.div_querys{
+	height:100%;
+}
+.rightClass{
+	float: right;
+	text-align: right;
+	margin-right: 5px;
+	font-size: 12px;
+	color:#444444;
+	font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif;
+}
+
+.div_titles{
+	line-height: 40px;
+	height: 40px;
+	font-size:15px;
+	color: #333;
+	width:50%;
+	font-weight: bold;
+	font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif;
+}
+.div_titles1{
+	line-height: 40px;
+	height: 40px;
+	font-size:13px;
+	color: #333;
+	width:50%;
+	font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif;
+}
+
+.fontStyle{
+	color:#444444;
+	font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif;
+}
+.operationButton{
+    float:right;
+    margin-right:20px;
+}
+
+.operationButton1{
+    float:right;
+    margin-right:0px;
+}
+
+.jzRightTable{
+    padding:15px 2%;
+	box-sizing: border-box;
+}
+.maxRow{
+  /*height:100%;*/
+  border-top:2px solid #3c8dbc;
+  border-radius:5px;
+}
+.maxRow1{
+	height:100%;
+	border-top:2px solid #3c8dbc;
+	border-radius:5px;
+}
+
+.modalInput{
+    width:90%;
+}
+
+.line{
+	margin-left:2%;
+	margin-top:12px;
+	height:1px;
+	width:96%;
+	background: #e8e8e8;
+}
+.ant-table-tbody > tr > td {
+	padding: 16px 16px;
+	/*word-break: break-word;*/
+}
+.sider{
+	/*min-height: 760px;*/
+	border-right:1px solid #e8e8e8;
+	min-height:93vh;
+}
+
+.content{
+	min-height:93vh;
+	overflow-y:hidden;
+}
+#root:after{
+	display: block;
+	content: '';
+	clear: both;
+	visibility: hidden;
+	height: 0;
+}
+
+.detail{
+	font-family:MicrosoftYaHei-Bold;
+	font-weight: bold;
+}
+.labelCss{
+    line-height: 32px;
+	float: right;
+}
+.labelCss1{
+	line-height: 32px;
+	float: right;
+}
+.labelCss::before {
+	display: inline-block;
+	margin-right: 4px;
+	color: #f5222d;
+	font-size: 14px;
+	font-family: SimSun, sans-serif;
+	line-height: 1;
+	content: '*';
+}
+.flushRight{
+	float:right;
+}

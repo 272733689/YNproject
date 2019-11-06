@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>首页</title>
+
+		<script>
+
+		</script>
+		<script src="/web/pub/bootstrap3.3.5/js/jquery.min.js"></script>
+	</head>
+
+	<body style="background:#F1F1F1;height:99%;">
+		<div id="root" style="height:100%"></div>
+		<div id="myModal" class="modal fade bs-example-modal" style="overflow-y:hidden;height:100%" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<iframe id="bjframe" name="bjframe" src="" style="width:100%;" frameborder="0"></iframe>
+				</div>
+			</div>
+		</div>
+
+		<script>
+            function showModal(g_src){
+                if(g_src!=''){
+                    $("#bjframe").attr("src",g_src);
+                    $('#myModal').modal({backdrop:'static'});
+                }
+            }
+            function closeModal(){
+                $('#myModal').modal("hide");
+            }
+		</script>
+	</body>
+</html>
