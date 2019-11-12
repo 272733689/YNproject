@@ -1,4 +1,4 @@
-import { LocaleProvider, Select, Table, Row, Switch, Card, Col, Divider, Button, Input, Pagination , Modal, message, List, Avatar, Skeleton, Icon ,TreeSelect } from 'antd';
+import { LocaleProvider, Select, Table, Row, Switch, Card, Col, Divider, Button, Input, Pagination , Modal, message, List ,TreeSelect} from 'antd';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './auditing1.less';
@@ -9,31 +9,6 @@ import zhCN from 'antd/lib/locale-provider/zh_CN';
 const { Meta } = Card;
 const count = 3;
 const Option = Select.Option;
-
-const treeData = [
-    {
-        title: 'Node1',
-        value: '0-0',
-        key: '0-0',
-        children: [
-            {
-                title: 'Child Node1',
-                value: '0-0-1',
-                key: '0-0-1',
-            },
-            {
-                title: 'Child Node2',
-                value: '0-0-2',
-                key: '0-0-2',
-            },
-        ],
-    },
-    {
-        title: 'Node2',
-        value: '0-1',
-        key: '0-1',
-    },
-];
 
 var status=false;
 class JalaSmartLineTable extends React.Component {
@@ -53,6 +28,11 @@ class JalaSmartLineTable extends React.Component {
         clearInterval(this.timerID);
     }
 
+    componentDidMount() {
+        this.getTree();
+    };
+
+
 
     onChangePagination = page => {
         // 传入的当前第几页。 返回data 的数据
@@ -61,13 +41,6 @@ class JalaSmartLineTable extends React.Component {
         }, () => {
             this.getLineInfo();
         });
-
-    };
-
-
-    //   加载页面时 触发
-    componentDidMount() {
-        this.getTree();
 
     };
 
@@ -103,6 +76,7 @@ class JalaSmartLineTable extends React.Component {
         switchsChecked : '',
         isEnableGas  : '' ,
         delcount:0,
+        treeData :[] , // 树的数据 啊
 
         /*        treeData : [
          {
@@ -287,7 +261,24 @@ class JalaSmartLineTable extends React.Component {
                             </Row>
                         </Modal>
 
-
+                        <Modal title="密码验证" visible={this.state.verification}  onOk={this.handleOkverification}  maskStyle={{ position : 'fixed',
+                            top: '0',
+                            right: '0',
+                            left: '0',
+                            zIndex: '1000',
+                            height: '100%',
+                            backgroundColor: '#000000a8',
+                        }}  maskClosable={false} onCancel={this.handleCancel} width={500}>
+                            <Row style={{ marginTop: '0.8%' }}>
+                                <Col span={8} style={{ lineHeight: '32px' }}>
+                                    <span >输入网点密码:</span>
+                                </Col>
+                                <Col span={8} style={{ lineHeight: '32px' }}>
+                                    <Input value={this.state.password} onChange={e => this.setState({ 'password': e.target.value })}
+                                           style={{ width: '65%' }} />
+                                </Col>
+                            </Row>
+                        </Modal>
 
                         <Modal title="修改阈值" visible={this.state.visible2} onOk={this.handleOk2} maskClosable={false} onCancel={this.handleCancel2} width={500}>
                             <Row style={{ marginTop: '0.8%' }}>
@@ -497,7 +488,24 @@ class JalaSmartLineTable extends React.Component {
                             </Row>
                         </Modal>
 
-
+                        <Modal title="密码验证" visible={this.state.verification} onOk={this.handleOkverification}   maskStyle={{ position : 'fixed',
+                            top: '0',
+                            right: '0',
+                            left: '0',
+                            zIndex: '1000',
+                            height: '100%',
+                            backgroundColor: '#000000a8',
+                        }}   maskClosable={false} onCancel={this.handleCancel} width={500}>
+                            <Row style={{ marginTop: '0.8%' }}>
+                                <Col span={8} style={{ lineHeight: '32px' }}>
+                                    <span >输入网点密码:</span>
+                                </Col>
+                                <Col span={8} style={{ lineHeight: '32px' }}>
+                                    <Input value={this.state.password} onChange={e => this.setState({ 'password': e.target.value })}
+                                           style={{ width: '65%' }} />
+                                </Col>
+                            </Row>
+                        </Modal>
 
                         <Modal title="修改阈值" visible={this.state.visible2} onOk={this.handleOk2} maskClosable={false} onCancel={this.handleCancel2} width={500}>
                             <Row style={{ marginTop: '0.8%' }}>
@@ -576,19 +584,18 @@ class JalaSmartLineTable extends React.Component {
                                                 style={{ width: '65%', float: 'left', marginLeft: 10, paddingTop: 10 }}>
                                             {this.state.deviceList}
                                         </Select>
-                                      {/*  开始*/}
-                                        <TreeSelect
-                                         style={{ width: '65%', float: 'left', marginLeft: 10, paddingTop: 10 }}
-                                         // value={this.state.device}   //指定当前选中的条目
-                                         dropdownStyle={{ maxHeight: 400, overflow: 'auto' }}
-                                         treeData={treeData}
-                                         placeholder="选择设备"
-                                         treeDefaultExpandAll
-                                         onChange={this.TreeOnChange}
-                                         // defaultValue={this.state.device}  //默认选中的条目
-                                         />
+                                        {/*开始*/}
 
-                                      {/*  结束*/}
+                                        <TreeSelect
+                                            style={{ width: '100%' }}
+                                            value={this.state.value}
+                                            dropdownStyle={{ maxHeight: 400, overflow: 'auto' }}
+                                            treeData={this.state.treeData}
+                                            placeholder="Please select"
+                                            treeDefaultExpandAll
+                                            onChange={this.onChangeTree}
+                                        />
+                                        {/*结束*/}
                                     </Col>
                                 </Row>
                             </Col>
@@ -598,82 +605,22 @@ class JalaSmartLineTable extends React.Component {
 
                 {lineChose}
                 <Row style={{ float:"right",  marginRight : 30}}>
-                    <Pagination current={this.state.current} onChange={this.onChangePagination} total={this.state.total} />
+                   {/* <div style={{marginRight: 10, marginTop: 5}}> 共计 {this.state.total} 条数据</div>*/}
+                    <Pagination  current={this.state.current} onChange={this.onChangePagination} total={this.state.total}
+
+                    />
+{/*                    pagination={{
+                    total: total,
+                    pageSize: pageSize1,
+                    showTotal: function () {
+                        return <div style={{marginRight: 10, marginTop: 5}}> 共计 {this.total} 条数据</div>
+                    }
+                    }}*/}
                 </Row>
 
-                <Modal title="密码验证" visible={this.state.verification}  onOk={this.handleOkverification}
-/*                       maskStyle={{ position : 'fixed',
-                    top: '0',
-                    right: '0',
-                    left: '0',
-                    zIndex: '1000',
-                    height: '100%',
-                    backgroundColor: '#000000a8',
-                         }} */
-                       maskClosable={false} onCancel={this.handleCancel} width={500}>
-                    <Row style={{ marginTop: '0.8%' }}>
-                        <Col span={8} style={{ lineHeight: '32px' }}>
-                            <span >输入网点密码:</span>
-                        </Col>
-                        <Col span={8} style={{ lineHeight: '32px' }}>
-                            <Input value={this.state.password} onChange={e => this.setState({ 'password': e.target.value })}
-                                   style={{ width: '65%' }} />
-                        </Col>
-                    </Row>
-                </Modal>
-
             </div>
-
-
-
         );
     }
-
-
-    TreeOnChange = value => {
-        console.log(value);
-        this.setState({ value });
-    };
-
-    getTree  = () => {
-        const { lineFlag,gateWayId } = this.state;
-        console.log("lineFlag", lineFlag);
-        reqwest({
-            url: '/console/jalasmart/getRunAccessGateway',
-            method: 'GET',
-            credentials: 'include',
-            data: {
-                id: gateWayId,
-                current : this.state.current,
-            }
-        }).then((data) => {
-            var ds = data;
-            console.log("刷新成功")
-            var ds1 = eval('('+ds[0].devAccessDetail+')');
-            this.setState({
-                lineData: ds[0].result,
-                online: ds[0].online === true ? '在线' : '离线',
-                devAccessDetail: ds1.lan === null ? null : ds1.lan,
-                lineFlag: ds[0].result[0].elecPhaseCount,
-            },()=>{
-                if(ds[0].total !== null && ds[0].total !== "null" ){
-                    this.setState({
-                        total: ds[0].total,
-                    })
-                }
-                this.state.lineData.map(items=>
-                    console.log(items)
-                );
-            })
-        })
-    }
-
-
-    // getLineInfo = () => {
-    //
-    // }
-
-
     //线路编辑方法
     handleOk = () => {
         const { measPointName, measPointId } = this.state;
@@ -1084,10 +1031,7 @@ class JalaSmartLineTable extends React.Component {
             });
         })
     }
-
-
-
-/*    getLineInfo = () => {
+    getLineInfo = () => {
         const { lineFlag,gateWayId } = this.state;
         console.log("lineFlag", lineFlag);
         reqwest({
@@ -1107,19 +1051,20 @@ class JalaSmartLineTable extends React.Component {
                 online: ds[0].online === true ? '在线' : '离线',
                 devAccessDetail: ds1.lan === null ? null : ds1.lan,
                 lineFlag: ds[0].result[0].elecPhaseCount,
+                total: ds[0].total,
             },()=>{
-                /!*                if(this.state.lineData.length === 1){
+                /*                if(this.state.lineData.length === 1){
                  console.log("只有一条线路  有多条线路")
                  }else{
 
-                 }*!/
+                 }*/
 
-                if(ds[0].total !== null && ds[0].total !== "null" ){
+/*                if(ds[0].total !== null && ds[0].total !== "null" ){
                     this.setState({
                         total: ds[0].total,
                     })
 
-                }
+                }*/
                 this.state.lineData.map(items=>
                     console.log(items)
                 );
@@ -1127,7 +1072,35 @@ class JalaSmartLineTable extends React.Component {
             // console.log("Linedata1", data);
             // console.log("Line elecPhaseCount :", data[0].elecPhaseCount);
         })
-    }*/
+    }
+
+
+
+    onChangeTree = value => {
+        console.log(value);
+        this.setState({ value });
+    };
+
+    //树的下拉框 展示
+    getTree  = () => {
+        reqwest({
+            url: '/console/jalasmart/getDeviceTree',
+            method: 'GET',
+            credentials: 'include',
+            data: {
+                id: ''
+            }
+        }).then((data) => {
+            // treeData : data
+            console.log("data全部的值是======", data);
+            console.log("返回的数据是====", data);
+            this.setState({
+                treeData : data
+            })
+        })
+
+    }
+
 
 
 }
