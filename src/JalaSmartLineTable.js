@@ -29,7 +29,7 @@ class JalaSmartLineTable extends React.Component {
     }
 
     componentDidMount() {
-        this.getTree();
+        // this.getTree();
     };
 
 
@@ -586,7 +586,7 @@ class JalaSmartLineTable extends React.Component {
                                         </Select>
                                         {/*开始*/}
 
-                                        <TreeSelect
+{/*                                        <TreeSelect
                                             style={{ width: '100%' }}
                                             value={this.state.value}
                                             dropdownStyle={{ maxHeight: 400, overflow: 'auto' }}
@@ -594,7 +594,7 @@ class JalaSmartLineTable extends React.Component {
                                             placeholder="Please select"
                                             treeDefaultExpandAll
                                             onChange={this.onChangeTree}
-                                        />
+                                        />*/}
                                         {/*结束*/}
                                     </Col>
                                 </Row>
@@ -1023,7 +1023,6 @@ class JalaSmartLineTable extends React.Component {
                 id: ''
             }
         }).then((data) => {
-            console.log("data", data);
             // var ds=eval('('+data+')');
             // console.log("data1",ds[0])
             this.setState({ deviceList: data.map(option => <Option key={option.id}>{option.devAccessName}</Option>), device: data[0].devAccessName, gateWayId: data[0].id }, () => {
@@ -1076,13 +1075,13 @@ class JalaSmartLineTable extends React.Component {
 
 
 
-    onChangeTree = value => {
+/*    onChangeTree = value => {
         console.log(value);
         this.setState({ value });
-    };
+    };*/
 
     //树的下拉框 展示
-    getTree  = () => {
+/*    getTree  = () => {
         reqwest({
             url: '/console/jalasmart/getDeviceTree',
             method: 'GET',
@@ -1099,7 +1098,7 @@ class JalaSmartLineTable extends React.Component {
             })
         })
 
-    }
+    }*/
 
 
 
