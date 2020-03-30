@@ -221,7 +221,7 @@ class EnergyOverviewSingleuser  extends React.Component{
                 id: id,
             });
         }else{
-            return '48263896638685189';
+            return '64571983504867335';
         }
         // return '20174508665077775';
         return id;
@@ -398,7 +398,8 @@ class EnergyOverviewSingleuser  extends React.Component{
             }
         }).then((data)=>{
             var ds=eval('('+data+')');
-            console.log('ds 大苏打实打实',ds);
+            console.log('返回的数据是',ds[0].result);
+
             let dataBill=[];
             if(ds[0].result !== null && ds[0].result !=="null" ){
                 if(value === "1" && ds[0].result.econsValueDr1 !== null && ds[0].result.econsValueDr1 !== "null" ){
@@ -417,18 +418,19 @@ class EnergyOverviewSingleuser  extends React.Component{
                     });
 
                 }else if( value === "2" && ds[0].result.econsValueDr1 !== null && ds[0].result.econsValueDr1 !== "null" ){
-
+                    console.log('进来222222222222222222',ds[0].result.econsValueMr1);
+                    console.log('进来222222222222222222',ds[0].result.econsValueMr2);
                     dataBill.push(
-                        {value:ds[0].result.econsValueMr1, name:'尖'},
-                        {value:ds[0].result.econsValueMr2, name:'峰'},
-                        {value:ds[0].result.econsValueMr3, name:'平'},
-                        {value:ds[0].result.econsValueMr4, name:'谷'},
+                        {value:ds[0].result.econsValueMr1 === null?0:ds[0].result.econsValueMr1, name:'尖'},
+                        {value:ds[0].result.econsValueMr2 === null?0:ds[0].result.econsValueMr2, name:'峰'},
+                        {value:ds[0].result.econsValueMr3 === null?0:ds[0].result.econsValueMr3, name:'平'},
+                        {value:ds[0].result.econsValueMr4 === null?0:ds[0].result.econsValueMr4, name:'谷'},
                     )
                     this.setState({
-                        econsValue1 :ds[0].result.econsValueMr1 ,//尖
-                        econsValue2 :ds[0].result.econsValueMr2, //峰
-                        econsValue3 :ds[0].result.econsValueMr3 ,//平
-                        econsValue4 :ds[0].result.econsValueMr4 ,//谷
+                        econsValue1 :ds[0].result.econsValueMr1 === null?0:ds[0].result.econsValueMr1 ,//尖
+                        econsValue2 :ds[0].result.econsValueMr2 === null?0:ds[0].result.econsValueMr1, //峰
+                        econsValue3 :ds[0].result.econsValueMr3 === null?0:ds[0].result.econsValueMr1,//平
+                        econsValue4 :ds[0].result.econsValueMr4 === null?0:ds[0].result.econsValueMr1,//谷
                     });
                 }else if( value ==="3" && ds[0].result.econsValueDr1 !== null && ds[0].result.econsValueDr1 !== "null" ){
 
@@ -473,7 +475,6 @@ class EnergyOverviewSingleuser  extends React.Component{
                 });
             }
 
-            console.log('来卡  没有数据  会不会',);
             let ElectricityBill = echarts.init(document.getElementById('ElectricityBill'));
             window.addEventListener("resize",function(){
                 ElectricityBill.resize();
@@ -559,56 +560,66 @@ class EnergyOverviewSingleuser  extends React.Component{
             }
         }).then((data)=>{
             var ds=eval('('+data+')');
-            console.log('返回的数据是========',ds[0].size);
+
             let dataNum =[];
             let dataDay1=[];
             if( value==="1"){
-                console.log('判断',value);
                 dataNum = this.state.dataDayNum1;
-                dataDay1= [ds[0].EloadDay.eloadValue01, ds[0].EloadDay.eloadValue02, ds[0].EloadDay.eloadValue03, ds[0].EloadDay.eloadValue04, ds[0].EloadDay.eloadValue05, ds[0].EloadDay.eloadValue06, ds[0].EloadDay.eloadValue07, ds[0].EloadDay.eloadValue08, ds[0].EloadDay.eloadValue09, ds[0].EloadDay.eloadValue10,
-                    ds[0].EloadDay.eloadValue11, ds[0].EloadDay.eloadValue12, ds[0].EloadDay.eloadValue13, ds[0].EloadDay.eloadValue14, ds[0].EloadDay.eloadValue15, ds[0].EloadDay.eloadValue16, ds[0].EloadDay.eloadValue17, ds[0].EloadDay.eloadValue18, ds[0].EloadDay.eloadValue19, ds[0].EloadDay.eloadValue20,
-                    ds[0].EloadDay.eloadValue21, ds[0].EloadDay.eloadValue22, ds[0].EloadDay.eloadValue23, ds[0].EloadDay.eloadValue24, ds[0].EloadDay.eloadValue25, ds[0].EloadDay.eloadValue26, ds[0].EloadDay.eloadValue27, ds[0].EloadDay.eloadValue28, ds[0].EloadDay.eloadValue29, ds[0].EloadDay.eloadValue30,
-                    ds[0].EloadDay.eloadValue31, ds[0].EloadDay.eloadValue32, ds[0].EloadDay.eloadValue33, ds[0].EloadDay.eloadValue34, ds[0].EloadDay.eloadValue35, ds[0].EloadDay.eloadValue36, ds[0].EloadDay.eloadValue37, ds[0].EloadDay.eloadValue38, ds[0].EloadDay.eloadValue39, ds[0].EloadDay.eloadValue40,
-                    ds[0].EloadDay.eloadValue41, ds[0].EloadDay.eloadValue42, ds[0].EloadDay.eloadValue43, ds[0].EloadDay.eloadValue44, ds[0].EloadDay.eloadValue45, ds[0].EloadDay.eloadValue46, ds[0].EloadDay.eloadValue47, ds[0].EloadDay.eloadValue48, ds[0].EloadDay.eloadValue49, ds[0].EloadDay.eloadValue50,
-                    ds[0].EloadDay.eloadValue51, ds[0].EloadDay.eloadValue52, ds[0].EloadDay.eloadValue53, ds[0].EloadDay.eloadValue54, ds[0].EloadDay.eloadValue55, ds[0].EloadDay.eloadValue56, ds[0].EloadDay.eloadValue57, ds[0].EloadDay.eloadValue58, ds[0].EloadDay.eloadValue59, ds[0].EloadDay.eloadValue60,
-                    ds[0].EloadDay.eloadValue61, ds[0].EloadDay.eloadValue62, ds[0].EloadDay.eloadValue63, ds[0].EloadDay.eloadValue64, ds[0].EloadDay.eloadValue65, ds[0].EloadDay.eloadValue66, ds[0].EloadDay.eloadValue67, ds[0].EloadDay.eloadValue68, ds[0].EloadDay.eloadValue69, ds[0].EloadDay.eloadValue70,
-                    ds[0].EloadDay.eloadValue71, ds[0].EloadDay.eloadValue72, ds[0].EloadDay.eloadValue73, ds[0].EloadDay.eloadValue74, ds[0].EloadDay.eloadValue75, ds[0].EloadDay.eloadValue76, ds[0].EloadDay.eloadValue77, ds[0].EloadDay.eloadValue78, ds[0].EloadDay.eloadValue79, ds[0].EloadDay.eloadValue80,
-                    ds[0].EloadDay.eloadValue81, ds[0].EloadDay.eloadValue82, ds[0].EloadDay.eloadValue83, ds[0].EloadDay.eloadValue84, ds[0].EloadDay.eloadValue85, ds[0].EloadDay.eloadValue86, ds[0].EloadDay.eloadValue87, ds[0].EloadDay.eloadValue88, ds[0].EloadDay.eloadValue89, ds[0].EloadDay.eloadValue90,
-                    ds[0].EloadDay.eloadValue91, ds[0].EloadDay.eloadValue92, ds[0].EloadDay.eloadValue93, ds[0].EloadDay.eloadValue94, ds[0].EloadDay.eloadValue95,ds[0].EloadDay.eloadValue96,
-                ];
+
+                if(ds[0].EloadDay === null){
+                    dataDay1=[];
+                }else{
+                    dataDay1= [ds[0].EloadDay.eloadValue01, ds[0].EloadDay.eloadValue02, ds[0].EloadDay.eloadValue03, ds[0].EloadDay.eloadValue04, ds[0].EloadDay.eloadValue05, ds[0].EloadDay.eloadValue06, ds[0].EloadDay.eloadValue07, ds[0].EloadDay.eloadValue08, ds[0].EloadDay.eloadValue09, ds[0].EloadDay.eloadValue10,
+                        ds[0].EloadDay.eloadValue11, ds[0].EloadDay.eloadValue12, ds[0].EloadDay.eloadValue13, ds[0].EloadDay.eloadValue14, ds[0].EloadDay.eloadValue15, ds[0].EloadDay.eloadValue16, ds[0].EloadDay.eloadValue17, ds[0].EloadDay.eloadValue18, ds[0].EloadDay.eloadValue19, ds[0].EloadDay.eloadValue20,
+                        ds[0].EloadDay.eloadValue21, ds[0].EloadDay.eloadValue22, ds[0].EloadDay.eloadValue23, ds[0].EloadDay.eloadValue24, ds[0].EloadDay.eloadValue25, ds[0].EloadDay.eloadValue26, ds[0].EloadDay.eloadValue27, ds[0].EloadDay.eloadValue28, ds[0].EloadDay.eloadValue29, ds[0].EloadDay.eloadValue30,
+                        ds[0].EloadDay.eloadValue31, ds[0].EloadDay.eloadValue32, ds[0].EloadDay.eloadValue33, ds[0].EloadDay.eloadValue34, ds[0].EloadDay.eloadValue35, ds[0].EloadDay.eloadValue36, ds[0].EloadDay.eloadValue37, ds[0].EloadDay.eloadValue38, ds[0].EloadDay.eloadValue39, ds[0].EloadDay.eloadValue40,
+                        ds[0].EloadDay.eloadValue41, ds[0].EloadDay.eloadValue42, ds[0].EloadDay.eloadValue43, ds[0].EloadDay.eloadValue44, ds[0].EloadDay.eloadValue45, ds[0].EloadDay.eloadValue46, ds[0].EloadDay.eloadValue47, ds[0].EloadDay.eloadValue48, ds[0].EloadDay.eloadValue49, ds[0].EloadDay.eloadValue50,
+                        ds[0].EloadDay.eloadValue51, ds[0].EloadDay.eloadValue52, ds[0].EloadDay.eloadValue53, ds[0].EloadDay.eloadValue54, ds[0].EloadDay.eloadValue55, ds[0].EloadDay.eloadValue56, ds[0].EloadDay.eloadValue57, ds[0].EloadDay.eloadValue58, ds[0].EloadDay.eloadValue59, ds[0].EloadDay.eloadValue60,
+                        ds[0].EloadDay.eloadValue61, ds[0].EloadDay.eloadValue62, ds[0].EloadDay.eloadValue63, ds[0].EloadDay.eloadValue64, ds[0].EloadDay.eloadValue65, ds[0].EloadDay.eloadValue66, ds[0].EloadDay.eloadValue67, ds[0].EloadDay.eloadValue68, ds[0].EloadDay.eloadValue69, ds[0].EloadDay.eloadValue70,
+                        ds[0].EloadDay.eloadValue71, ds[0].EloadDay.eloadValue72, ds[0].EloadDay.eloadValue73, ds[0].EloadDay.eloadValue74, ds[0].EloadDay.eloadValue75, ds[0].EloadDay.eloadValue76, ds[0].EloadDay.eloadValue77, ds[0].EloadDay.eloadValue78, ds[0].EloadDay.eloadValue79, ds[0].EloadDay.eloadValue80,
+                        ds[0].EloadDay.eloadValue81, ds[0].EloadDay.eloadValue82, ds[0].EloadDay.eloadValue83, ds[0].EloadDay.eloadValue84, ds[0].EloadDay.eloadValue85, ds[0].EloadDay.eloadValue86, ds[0].EloadDay.eloadValue87, ds[0].EloadDay.eloadValue88, ds[0].EloadDay.eloadValue89, ds[0].EloadDay.eloadValue90,
+                        ds[0].EloadDay.eloadValue91, ds[0].EloadDay.eloadValue92, ds[0].EloadDay.eloadValue93, ds[0].EloadDay.eloadValue94, ds[0].EloadDay.eloadValue95,ds[0].EloadDay.eloadValue96,
+                    ];
+                }
+
             }
 
             if( value==="2"){
-                console.log('判断',value);
-                console.log('判断1',ds[0].EloadMonth[0].avgValue);
-                console.log('判断2',ds[0].EloadMonth[0].dateStat);
-                for (var i=0;i<ds[0].EloadMonth.length;i++) {
-                    dataDay1.push(
-                        ds[0].EloadMonth[i].avgValue,
-                    )
+                if(ds[0].EloadMonth === null){
+                    dataDay1=[];
+                }else{
+                    for (var i=0;i<ds[0].EloadMonth.length;i++) {
+                        dataDay1.push(
+                            ds[0].EloadMonth[i].avgValue,
+                        )
 
-                    let time= ds[0].EloadMonth[i].dateStat
-                    let timeFormat = moment(time).format('YYYY-MM-DD');
-                    dataNum.push(
-                        timeFormat
-                    )
+                        let time= ds[0].EloadMonth[i].dateStat
+                        let timeFormat = moment(time).format('YYYY-MM-DD');
+                        dataNum.push(
+                            timeFormat
+                        )
+                    }
+
                 }
+
+
             }
 
             if( value==="3"){
-                console.log('判断',value);
-                console.log('判断1',ds[0].EloadYear[0].avgValue);
-                console.log('判断2',ds[0].EloadYear[0].monthStat);
-                for (var i=0;i<ds[0].EloadYear.length;i++) {
-                    dataDay1.push(
-                        ds[0].EloadYear[i].avgValue,
-                    )
-                    // let time= ds[0].EloadYear[i].monthStat
-                    // let timeFormat = moment(time).format('YYYY-MM');
-                    dataNum.push(
-                        ds[0].EloadYear[i].monthStat,
-                        // timeFormat
-                    )
+                if(ds[0].EloadYear === null){
+                    dataDay1=[];
+                }else{
+                    for (var i=0;i<ds[0].EloadYear.length;i++) {
+                        dataDay1.push(
+                            ds[0].EloadYear[i].avgValue,
+                        )
+                        // let time= ds[0].EloadYear[i].monthStat
+                        // let timeFormat = moment(time).format('YYYY-MM');
+                        dataNum.push(
+                            ds[0].EloadYear[i].monthStat,
+                            // timeFormat
+                        )
+                    }
                 }
             }
             var  loadPro = echarts.init(document.getElementById('loadPro'));
